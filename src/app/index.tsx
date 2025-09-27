@@ -2,8 +2,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React from "react"; // 🔹 adicionar React
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { style } from "./styles";
+import { router } from 'expo-router';
 
 export default function inicio() {
+
+  function login(){
+    router.navigate("/login")
+  }
 
     return (
       
@@ -18,7 +23,7 @@ export default function inicio() {
           <Image style={style.img} source={require("../../assets/images/logo.png")} />
 
           <View style={style.viewButao}>
-            <TouchableOpacity style={style.buttonUm}>
+            <TouchableOpacity style={style.buttonUm} onPress={login}>
               <Text style={style.textoBotao}>Login</Text>
             </TouchableOpacity>
 
