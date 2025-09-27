@@ -14,13 +14,25 @@ export default function RootLayout() {
     headerShown: true,
     presentation: 'transparentModal',
     contentStyle: {
-      backgroundColor: '#313d49' 
-    }
+      backgroundColor: '#313d49'
+    },
+
+
   }}>
     <Stack.Screen name="index" options={{ title: "Criar midia", headerShown: false }}></Stack.Screen>
+    <Stack.Screen name="login" options={{
+      title: "",
+      headerTransparent: true,     // 🔑 deixa o header transparente
+      headerBackTitle: "",
+      headerTintColor: "#fff",     // cor da seta
+      headerShadowVisible: false,
+      headerStyle: {
+        backgroundColor: "transparent", // garante fundo transparente
+      }
+    }}></Stack.Screen>
     <Stack.Screen name="menu" options={{ title: "Criar midia", headerShown: false }}></Stack.Screen>
-    <Stack.Screen name="criar-midia" options={{ title: "Criar midia"}}></Stack.Screen>
-  </Stack>;
+    <Stack.Screen name="criar-midia" options={{ title: "Criar midia" }}></Stack.Screen>
+  </Stack >;
 
 }
 
