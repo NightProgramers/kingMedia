@@ -31,7 +31,7 @@ export default function Login() {
     }
 
 
-
+    //teste
     return (
         <LinearGradient
             colors={["#C73E1D", "#FAA916"]}
