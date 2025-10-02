@@ -19,8 +19,11 @@ export default function RootLayout() {
 
 
   }}>
-    <Stack.Screen name="index" options={{ title: "Criar midia", headerShown: false }}></Stack.Screen>
-    <Stack.Screen name="login" options={{
+    <Stack.Screen name="index" options={{ title: "", headerShown: false }}></Stack.Screen>
+
+    <Stack.Screen name="login" options={{title: "",headerShown: false,}}></Stack.Screen>
+
+        <Stack.Screen name="cadastro" options={{
       title: "",
       headerTransparent: true,     // 🔑 deixa o header transparente
       headerBackTitle: "",
@@ -30,6 +33,11 @@ export default function RootLayout() {
         backgroundColor: "transparent", // garante fundo transparente
       }
     }}></Stack.Screen>
+
+
+
+
+
     <Stack.Screen name="menu" options={{ title: "Criar midia", headerShown: false }}></Stack.Screen>
     <Stack.Screen name="criar-midia" options={{ title: "Criar midia" }}></Stack.Screen>
   </Stack >;

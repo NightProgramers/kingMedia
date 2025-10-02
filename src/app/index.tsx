@@ -1,8 +1,8 @@
 import { LinearGradient } from 'expo-linear-gradient';
+import { router } from 'expo-router';
 import React from "react"; // 🔹 adicionar React
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { style } from "./styles";
-import { router } from 'expo-router';
 
 export default function inicio() {
 

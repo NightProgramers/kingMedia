@@ -1,61 +1,68 @@
-import { MaterialIcons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Alert, Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { style } from "./styles";
-
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [visible, setVisible] = useState(false);
-    const [senha, setSenha] = useState();
+
+    const router = useRouter(); // ✅ inicializa o hook aqui
 
     function getLogin() {
         try {
             if (!email || !password) {
-                return Alert.alert("Atenção", "Informe Os Campos Obrigatórios!")
+                return Alert.alert("Atenção", "Informe os campos obrigatórios!");
             }
             if (email === "gionata" && password === "123") {
-                console.log("Logado! com Sucesso")
+                console.log("Logado com sucesso!");
+            } else {
+                Alert.alert("Usuário não encontrado!");
             }
-            else {
-                Alert.alert("Usuario Não Encontrado!")
-            }
+        } catch (error) {
+            console.log(error);
         }
-        catch (error) {
-            console.log(error)
-
-        }
-
     }
-
-
 
     return (
         <LinearGradient
             colors={["#C73E1D", "#FAA916"]}
-            start={{ x: 0.1, y: 0.54 }}   // começa no topo
-            end={{ x: 1, y: 0.6 }}       // termina embaixo
-            locations={[0, 0.7]}           // 70% da cor principal
-            style={style.container}      // ocupa toda a tela
+            start={{ x: 0.1, y: 0.54 }}
+            end={{ x: 1, y: 0.6 }}
+            locations={[0, 0.7]}
+            style={style.container}
         >
+            {/* 🔙 Botão Voltar */}
+            <TouchableOpacity onPress={() => {router.back();}}
+                style={{ position: "absolute", top: 50, left: 20, zIndex: 10 }}
+            ><Ionicons name="arrow-back" size={28} color="#fff" />
+            </TouchableOpacity>
+
+            {/* 🔙 Botão Voltar */}
+
+
             {/* Topo */}
             <View style={style.boxTop}>
-                <Image style={style.img} source={require("../../assets/images/logo2.png")}></Image>
+                <Image
+                    style={style.img}
+                    source={require("../../assets/images/logo2.png")}
+                />
             </View>
 
             {/* Inputs */}
             <View style={style.boxMid}>
-
                 <Text style={style.text}>Entrar</Text>
+
                 {/* Email */}
                 <View style={style.boxInput}>
                     <MaterialIcons
                         name="person"
                         size={20}
                         color={"white"}
-                        style={{ marginRight: 8, alignItems: "center" }}
+                        style={{ marginRight: 8 }}
                     />
                     <View style={style.separator}></View>
 
@@ -74,9 +81,8 @@ export default function Login() {
                         name="lock"
                         size={20}
                         color={"white"}
-                        style={{ marginRight: 8, alignItems: "center" }}
+                        style={{ marginRight: 8 }}
                     />
-
                     <View style={style.separator}></View>
 
                     <TextInput
@@ -87,25 +93,23 @@ export default function Login() {
                         value={password}
                         onChangeText={setPassword}
                     />
-                    <TouchableOpacity style={style.cadeado}><MaterialIcons
-                        name="visibility"
-                        size={20}
-                        color={"white"}
-                        style={{ marginRight: 8, alignItems: "center" }}
-                        onPress={() => setVisible(!visible)}
-                    /></TouchableOpacity >
-
-
+                    <TouchableOpacity onPress={() => setVisible(!visible)}>
+                        <MaterialIcons
+                            name={visible ? "visibility-off" : "visibility"}
+                            size={20}
+                            color={"white"}
+                        />
+                    </TouchableOpacity>
                 </View>
+
                 <View style={style.boxEquecido}>
                     <Text style={style.textEquecido}>Esqueceu a senha!</Text>
                 </View>
-
             </View>
 
             {/* Botão */}
             <View style={style.boxBottom}>
-                <TouchableOpacity style={style.button} onPress={() => { getLogin() }}>
+                <TouchableOpacity style={style.button} onPress={getLogin}>
                     <LinearGradient
                         colors={["#FAA916", "#C73E1D"]}
                         start={{ x: 0, y: 0 }}
@@ -117,10 +121,10 @@ export default function Login() {
                 </TouchableOpacity>
 
                 <Text style={style.textoCadastro}>
-                    Ainda não possui uma conta? <Text style={style.cadastreSe}>Cadastre-se</Text>
+                    Ainda não possui uma conta?{" "}
+                    <Text style={style.cadastreSe}>Cadastre-se</Text>
                 </Text>
             </View>
-
         </LinearGradient>
     );
 }
