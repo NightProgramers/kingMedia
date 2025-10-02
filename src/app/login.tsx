@@ -1,9 +1,9 @@
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Alert, Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { style } from "./styles";
-import { useRouter } from "expo-router";
 
 export default function Login() {
     const [email, setEmail] = useState("");

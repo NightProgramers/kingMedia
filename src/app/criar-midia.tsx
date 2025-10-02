@@ -1,7 +1,4 @@
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import { router } from "expo-router";
-import { db } from '../FirebaseConnection'
-import { doc, getDoc } from 'firebase/firestore'
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 
 export default function Index() {
