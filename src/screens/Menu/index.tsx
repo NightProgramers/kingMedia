@@ -1,18 +1,18 @@
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { router } from "expo-router";
-import { db } from '../FirebaseConnection'
-import { doc, getDoc } from 'firebase/firestore'
-import { Button } from "@/components/Button";
+import { Button } from "@/components/ButtonIcon";
+import { ButtonBack } from "@/components/ButtonBack";
 
 
 
 export default function Index() {
   function criarMidia() {
-    router.navigate("/criar-midia")
+    router.navigate("/criarMidia")
   }
 
   return (
     <View style={styles.container}>
+      <ButtonBack/>
       <Text>menu</Text>
       <TouchableOpacity style={styles.botão} onPress={criarMidia}>
         <Text>Criar</Text>

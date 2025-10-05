@@ -1,8 +1,9 @@
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { ButtonBack } from "@/components/ButtonBack";
+import { MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Alert, Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { style } from "./styles";
 
 export default function Login() {
@@ -13,20 +14,22 @@ export default function Login() {
     const router = useRouter(); // ✅ inicializa o hook aqui
 
     function getLogin() {
-        try {
-            if (!email || !password) {
-                return Alert.alert("Atenção", "Informe os campos obrigatórios!");
-            }
-            if (email === "gionata" && password === "123") {
-                console.log("Logado com sucesso!");
-            } else {
-                Alert.alert("Usuário não encontrado!");
-            }
-        } catch (error) {
-            console.log(error);
-        }
+        router.navigate("/menu")
+
+        //try {
+        //    if (!email || !password) {
+        //        return Alert.alert("Atenção", "Informe os campos obrigatórios!");
+        //    }
+        //    if (email === "gionata" && password === "123") {
+        //        console.log("Logado com sucesso!");
+        //    } else {
+        //        Alert.alert("Usuário não encontrado!");
+        //    }
+        //} catch (error) {
+        //    console.log(error);
+        //}
     }
-    
+
     return (
         <LinearGradient
             colors={["#C73E1D", "#FAA916"]}
@@ -35,20 +38,13 @@ export default function Login() {
             locations={[0, 0.7]}
             style={style.container}
         >
-            {/* 🔙 Botão Voltar */}
-            <TouchableOpacity onPress={() => {router.back();}}
-                style={{ position: "absolute", top: 50, left: 20, zIndex: 10 }}
-            ><Ionicons name="arrow-back" size={28} color="#fff" />
-            </TouchableOpacity>
-
-            {/* 🔙 Botão Voltar */}
-
+            <ButtonBack />
 
             {/* Topo */}
             <View style={style.boxTop}>
                 <Image
                     style={style.img}
-                    source={require("../../assets/images/logo2.png")}
+                    source={require("../../../assets/images/logo2.png")}
                 />
             </View>
 
@@ -108,6 +104,8 @@ export default function Login() {
             </View>
 
             {/* Botão */}
+
+
             <View style={style.boxBottom}>
                 <TouchableOpacity style={style.button} onPress={getLogin}>
                     <LinearGradient
