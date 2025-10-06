@@ -1,15 +1,12 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 
-export default function Index() {
-  function criarMidia() {
-
-  }
+export default function CriarMidia() {
 
   return (
     <View style={styles.container}>
       <Text>O que pretende organizar?</Text>
-      <TouchableOpacity style={styles.botão} onPress={criarMidia}>
+      <TouchableOpacity style={styles.botão}>
         <Text>Serie</Text>
       </TouchableOpacity>
     </View>

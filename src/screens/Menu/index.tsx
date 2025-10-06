@@ -1,23 +1,23 @@
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { ButtonBack } from "@/components/ButtonBack";
+import { ButtonIcon } from "@/components/ButtonIcon";
 import { router } from "expo-router";
-import { db } from '../FirebaseConnection'
-import { doc, getDoc } from 'firebase/firestore'
-import { Button } from "@/components/Button";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 
 
 export default function Index() {
   function criarMidia() {
-    router.navigate("/criar-midia")
+    router.navigate("/criarMidia")
   }
 
   return (
     <View style={styles.container}>
+      <ButtonBack/>
       <Text>menu</Text>
       <TouchableOpacity style={styles.botão} onPress={criarMidia}>
         <Text>Criar</Text>
       </TouchableOpacity>
-      <Button title="criar" onPress={criarMidia} iconName="favorite"></Button>
+      <ButtonIcon title="criar" onPress={criarMidia} iconName="favorite"/>
     </View>
   );
 }
