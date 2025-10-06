@@ -1,7 +1,7 @@
-import { TouchableOpacity, Text, View } from 'react-native';
-import { styles } from './styles';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ComponentProps } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+import { styles } from './styles';
 
 type IconName = ComponentProps<typeof MaterialIcons>['name'];
 
@@ -11,7 +11,7 @@ type ButtonProps = {
   iconName?: IconName;  // '?' significa que esta prop é opcional
 };
 
-export function Button({ title, onPress, iconName }: ButtonProps) {
+export function ButtonIcon({ title, onPress, iconName }: ButtonProps) {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.group}>

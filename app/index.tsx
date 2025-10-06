@@ -1,14 +1,13 @@
+import { ButtonLogin } from '@/components/ButtonLogin';
 import { LinearGradient } from 'expo-linear-gradient';
-import { router } from 'expo-router';
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { style } from "../src/screens/Login/styles";
 
+
 export default function inicio() {
 
-  function login() {
-    router.navigate("/login")
-  }
+
 
   return (
 
@@ -26,9 +25,8 @@ export default function inicio() {
       />
 
       <View style={style.viewButao}>
-        <TouchableOpacity style={style.buttonUm} onPress={login}>
-          <Text style={style.textoBotao}>Login</Text>
-        </TouchableOpacity>
+       
+        <ButtonLogin title="eenviarr" path="/login" />
 
         <TouchableOpacity style={style.buttonDois}>
           <Text style={style.textoBotaoDois}>Inscrever</Text>
