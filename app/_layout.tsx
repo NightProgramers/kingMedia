@@ -23,8 +23,6 @@ export default function RootLayout() {
 
     <Stack.Screen name="login" options={{ title: "", headerShown: false, }}></Stack.Screen>
 
-
-
     <Stack.Screen name="menu" options={{ title: "Criar midia", headerShown: false }}></Stack.Screen>
   </Stack >;
 
