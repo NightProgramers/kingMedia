@@ -2,7 +2,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import { style } from "../src/screens/Login/styles";
+import { style } from "../src/screens/login/styles";
 
 export default function inicio() {
 

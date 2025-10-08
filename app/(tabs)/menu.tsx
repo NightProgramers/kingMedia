@@ -1,4 +1,4 @@
-import Menu from "@/screens/Menu";
+import Menu from "@/screens/menu";
 
 export default function MenuPage() {
   return <Menu/>;
