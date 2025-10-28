@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     flex:1,
   },
     label: {
-    width: "90%",          // mesma largura do botão
+    width: "90%",          // mesma largura do botão sdsdsds
     textAlign: "left",     // texto alinhado à esquerda
     marginBottom: 5,       // espaço entre o texto e o botão
     fontSize: 16,
