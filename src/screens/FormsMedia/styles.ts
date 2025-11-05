@@ -1,13 +1,15 @@
+import { themas } from "@/global/themas";
 import { StyleSheet } from "react-native";
 
 
 export const styles = StyleSheet.create({
   container: {
     padding: 20,
-    marginTop: 70
+    marginTop: 70,
+    gap:80,
   },
   button: {
-    backgroundColor: "yellow",
+    backgroundColor: themas.colors.Secondary,
     padding: 12,
     borderRadius: 10,
   },
