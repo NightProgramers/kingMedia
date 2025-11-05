@@ -37,7 +37,7 @@ export default function SelectSimples() {
 
           <TouchableOpacity>
 
-            <Text></Text>
+            <Text>hhhhhh</Text>
           </TouchableOpacity>
 
 
