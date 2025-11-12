@@ -2,7 +2,7 @@ import { ButtonLogin } from '@/components/ButtonLogin';
 import { LinearGradient } from 'expo-linear-gradient';
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import { style } from "../Login/styles";
+import { style } from "../login/styles";
 
 
 export default function inicio() {
@@ -24,7 +24,7 @@ export default function inicio() {
 
       <View style={style.viewButao}>
        
-        <ButtonLogin title="Enviar" path="/formsMedia"/>
+        <ButtonLogin title="Login" path="/login"/>
 
         <TouchableOpacity style={style.buttonDois}>
           <Text style={style.textoBotaoDois}>Inscrever</Text>
