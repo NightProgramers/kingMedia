@@ -27,7 +27,13 @@ export default function RootLayout() {
   
     <Stack.Screen name="formsMedia" options={{ title: "", headerShown: true }}></Stack.Screen>
   
-  
+    <Stack.Screen name="(tabs)" options={{ headerShown: false }}></Stack.Screen>
+
+    <Stack.Screen
+      name="criarMidia"
+      options={{ headerShown: false }}
+    />
+
   </Stack >;
 
 }
