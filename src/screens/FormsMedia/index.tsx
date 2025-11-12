@@ -6,7 +6,8 @@ import { styles } from "./styles";
 export default function SelectSimples() {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("Assistindo!");
-
+  const [checked, setChecked] = React.useState(false);
+  const [selecionado, setSelecionado] = React.useState(false)
   return (
     <View style={styles.container}>
       <View style={{ gap: 10 }}>
@@ -31,14 +32,39 @@ export default function SelectSimples() {
       </View>
       <View style={{ gap: 10 }}>
         <Text style={{ color: "white" }}>Episodios Assistidos</Text>
-        <View style={{ width: "100%", borderBlockColor: "1px", borderBottomWidth: 1, borderBottomColor: themas.colors.Secondary }}></View>
+        <View style={{ width: "100%", borderBottomWidth: 1, borderBottomColor: themas.colors.Secondary }}></View>
       </View>
 
 
-          <TouchableOpacity>
+      <TouchableOpacity style={styles.check} onPress={()=>{setSelecionado(!selecionado)}}>
 
-            <Text>hhhhhh</Text>
-          </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => setChecked(!checked)}
+          style={{
+            width: 24,
+            height: 24,
+            borderRadius: 12, // redondo
+            borderWidth: 2,
+            borderColor: '#FFA500',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: checked ? '#FFA500' : 'transparent',
+            marginRight:10
+            }}>
+          {checked && (
+            <Text style={{ color: 'white', fontWeight: 'bold' }}>✓</Text>
+          )}
+        </TouchableOpacity>
+
+
+        <Text style={{ color: "white", marginRight:200 }}> Temporada 1 </Text>
+        <Text > {selecionado ? "▼" : "▲"}</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity>
+        <Text>+ Adicionar Temporada</Text>
+      </TouchableOpacity>
+
 
 
     </View>

@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
   container: {
     padding: 20,
     marginTop: 70,
-    gap:80,
+    gap: 80,
   },
   button: {
     backgroundColor: themas.colors.Secondary,
@@ -17,13 +17,19 @@ export const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "600"
   },
-  caixa: {
-    backgroundColor: "white",
-    padding: 10,
-    borderRadius: 8,
-    marginTop: 5,
-    alignItems: "center",
-  }
 
+  check: {
+    width: "100%",
+    height: 45,
+    borderRadius: 8,
+    flexDirection: "row",
+    borderColor: "orange",
+    borderWidth: 1,
+    alignItems: "center",
+    padding: 10,
+  },
+  caixa: {
+
+  },
 
 });
