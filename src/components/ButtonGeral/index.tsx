@@ -1,8 +1,8 @@
 import { useRouter } from 'expo-router';
-import { Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
 
-export function ButtonLogin({ title, path }: any) {
+export function ButtonGeral({ title, path }: any) {
     const router = useRouter();
    
     
@@ -11,10 +11,11 @@ export function ButtonLogin({ title, path }: any) {
       }
 
     return (
-
-        <TouchableOpacity onPress={login} style={styles.buttonUm}>
+        <View style={styles.caixa1}>       
+             <TouchableOpacity onPress={login} style={styles.caixa2}>
             <Text style={styles.textoBotao}>{title}</Text>
         </TouchableOpacity>
-        
+        </View>
+
     )
 };

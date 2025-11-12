@@ -1,7 +1,7 @@
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import { router } from "expo-router";
-import { Button } from "@/components/ButtonIcon";
 import { ButtonBack } from "@/components/ButtonBack";
+import { ButtonIcon } from "@/components/ButtonIcon";
+import { router } from "expo-router";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 
 
@@ -17,7 +17,7 @@ export default function Index() {
       <TouchableOpacity style={styles.botão} onPress={criarMidia}>
         <Text>Criar</Text>
       </TouchableOpacity>
-      <Button title="criar" onPress={criarMidia} iconName="favorite"></Button>
+      <ButtonIcon title="criar" onPress={criarMidia} iconName="favorite"/>
     </View>
   );
 }
