@@ -7,8 +7,6 @@ import { style } from "../Login/styles";
 
 export default function inicio() {
 
-
-
   return (
 
 
@@ -26,7 +24,7 @@ export default function inicio() {
 
       <View style={style.viewButao}>
        
-        <ButtonLogin title="enviar" path="/login" />
+        <ButtonLogin title="Enviar" path="/formsMedia"/>
 
         <TouchableOpacity style={style.buttonDois}>
           <Text style={style.textoBotaoDois}>Inscrever</Text>
