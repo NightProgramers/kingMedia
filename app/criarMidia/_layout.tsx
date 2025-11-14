@@ -30,6 +30,10 @@ export default function FormLayout() {
                 options={{ title: 'Pesquisar filme' }}
             />
             <Stack.Screen
+                name="filme/step3" 
+                options={{ title: 'Criar filme' }}
+            />
+            <Stack.Screen
                 name="livro/step2"
                 options={{ title: 'Pesquisar livro' }}
             />
