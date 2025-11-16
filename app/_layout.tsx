@@ -1,11 +1,9 @@
+import { themas } from "@/global/themas";
 import { Stack } from "expo-router";
 
 export default function RootLayout() {
   return <Stack screenOptions={{
-    headerStyle: {
-      backgroundColor: '#313d49',
-    },
-    headerTintColor: '#D9D9D9',
+    headerTintColor: themas.colors.White,
     headerTitleStyle: {
       fontWeight: 'medium',
       fontSize: 22,
@@ -13,21 +11,37 @@ export default function RootLayout() {
     headerTitleAlign: 'left',
     headerShown: true,
     presentation: 'transparentModal',
-    contentStyle: {
-      backgroundColor: '#313d49'
-    },
 
 
   }}>
     <Stack.Screen name="index" options={{ title: "", headerShown: false }}></Stack.Screen>
 
-    <Stack.Screen name="login" options={{ title: "", headerShown: false, }}></Stack.Screen>
+    <Stack.Screen name="login" options={{ 
+      headerTitle: "",
+      headerTransparent: true,
+      headerTintColor: themas.colors.White,
+      headerShadowVisible: false, 
+      }} />
 
     <Stack.Screen name="menu" options={{ title: "Criar midia", headerShown: false }}></Stack.Screen>
-  
-    <Stack.Screen name="formsMedia" options={{ title: "", headerShown: true }}></Stack.Screen>
-  
+
+    <Stack.Screen name="formsMedia" options={{ title: "" }}></Stack.Screen>
+
     <Stack.Screen name="(tabs)" options={{ headerShown: false }}></Stack.Screen>
+
+    <Stack.Screen name="cadastro" options={{
+      headerTitle: "",
+      headerTransparent: true,
+      headerTintColor: themas.colors.White,
+      headerShadowVisible: false,
+    }} />
+
+    <Stack.Screen name="recuperarSenha" options={{
+      headerTitle: "",
+      headerTransparent: true,
+      headerTintColor: themas.colors.White,
+      headerShadowVisible: false,
+    }} />
 
     <Stack.Screen
       name="criarMidia"

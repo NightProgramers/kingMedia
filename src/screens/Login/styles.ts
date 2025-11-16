@@ -163,8 +163,8 @@ export const style = StyleSheet.create({
     alignItems:"flex-end"
   },
 
-  cadastreSe:{
-    color:'#222fbfff',
+  link:{
+    color: themas.colors.Secondary,
 
   }
 
