@@ -32,7 +32,7 @@ export default function TabLayout() {
                         <TouchableOpacity
                             onPress={() => router.push('/criarMidia')} 
                             style={{
-                                top: -25,
+                                top: -20,
                                 justifyContent: 'center',
                                 alignItems: 'center',
                             }}
