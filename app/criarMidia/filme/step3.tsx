@@ -2,12 +2,21 @@ import { Text, View, StyleSheet } from "react-native";
 import { themas } from "@/global/themas";
 import { ImagemInput } from "@/components/ImagemInput";
 import { InputField } from "@/components/Input";
+import { DropdownSelect } from "@/components/DropdownSelect";
 import React, { useState } from "react";
 
 export default function FilmeStep3() {
     const [title, setTitle] = useState("");
     const [synopsis, setSynopsis] = useState("");
     const [url, setURL] = useState("");
+
+    const [status, setStatus] = useState("Assistindo");
+    const opcoesStatus = ["Assistindo", "Pausado", "Completo", "Planejo Ver"];
+
+    // Estado para o Episódio
+    const [episodio, setEpisodio] = useState("Episódio 1");
+    // Dica: Você pode gerar essa lista com código se forem muitos episódios
+    const opcoesEpisodios = ["Episódio 1", "Episódio 2", "Episódio 3", "Episódio 4"];
 
     return (
         <View style={styles.container}>
@@ -33,6 +42,13 @@ export default function FilmeStep3() {
                 value={url}
                 onChangeText={setURL}
                 placeholder="Digite o link de origem..."
+            />
+
+            <DropdownSelect
+                label="Status da Série"
+                options={opcoesStatus}
+                selectedValue={status}
+                onSelect={(item) => setStatus(item)}
             />
         </View>
     );

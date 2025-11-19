@@ -1,4 +1,4 @@
-import CriarMidia from "@/screens/criarMidia";
+import CriarMidia from "@/screens/CriarMidia";
 
 export default function CriarMidiaPage() {
   return <CriarMidia/>;

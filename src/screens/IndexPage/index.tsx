@@ -2,7 +2,7 @@ import { ButtonLogin } from '@/components/ButtonLogin';
 import { LinearGradient } from 'expo-linear-gradient';
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
-import { style } from "../login/styles";
+import { style } from "../Login/styles";
 
 
 export default function inicio() {
