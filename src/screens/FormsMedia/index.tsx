@@ -48,7 +48,7 @@ export default function SelectSimples() {
               ...s,
               episodes: [
                 ...s.episodes,
-                { title: `Episódio ${s.episodes.length + 1}`, checked: false },
+                { title: Episódio ${s.episodes.length + 1}, checked: false },
               ],
             }
           : s
@@ -61,7 +61,7 @@ export default function SelectSimples() {
     const id = nextSeasonId.current++;
     const newSeason: Season = {
       id,
-      title: `Temporada ${seasons.length + 1}`,
+      title: Temporada ${seasons.length + 1},
       episodes: [{ title: "Episódio 1", checked: false }],
       open: true, // opcional: já abre a temporada nova
       checked: false,
@@ -108,7 +108,7 @@ export default function SelectSimples() {
   const scrollPaddingBottom = BUTTON_HEIGHT + BUTTON_BOTTOM_MARGIN + 16; // +16 para folga
 
   return (
-    <View style={{ flex: 1,  }}>
+    <View style={{ flex: 1, backgroundColor: themas.colors.grayStrong}}>
       <ScrollView
         contentContainerStyle={{ padding: 16, paddingBottom: scrollPaddingBottom, gap: 12 }}
         showsVerticalScrollIndicator={false}
@@ -160,7 +160,7 @@ export default function SelectSimples() {
               <TouchableOpacity
                 onPress={() => toggleSeasonChecked(season.id)}
                 style={styles.inputcaixa}
-                accessibilityLabel={`Marcar todos episódios da ${season.title}`}
+                accessibilityLabel={Marcar todos episódios da ${season.title}}
               >
                 {season.checked && <Text style={{ color: "white", fontWeight: "bold" }}>✓</Text>}
               </TouchableOpacity>
@@ -169,7 +169,7 @@ export default function SelectSimples() {
               <TouchableOpacity
                 onPress={() => toggleSeasonOpen(season.id)}
                 style={[styles.check, { flex: 1, marginLeft: 8, paddingVertical: 12 }]}
-                accessibilityLabel={`${season.open ? "Fechar" : "Abrir"} ${season.title}`}
+                accessibilityLabel={${season.open ? "Fechar" : "Abrir"} ${season.title}}
               >
                 <Text style={{ color: "white", fontWeight: "600" }}>{season.title}</Text>
               </TouchableOpacity>
@@ -194,7 +194,7 @@ export default function SelectSimples() {
                     <TouchableOpacity
                       onPress={() => toggleEpisodeChecked(season.id, idx)}
                       style={styles.inputcaixa}
-                      accessibilityLabel={`Marcar ${ep.title}`}
+                      accessibilityLabel={Marcar ${ep.title}}
                     >
                       {ep.checked && <Text style={{ color: "white", fontWeight: "bold" }}>✓</Text>}
                     </TouchableOpacity>
@@ -202,7 +202,7 @@ export default function SelectSimples() {
                     <TouchableOpacity
                       onPress={() => setSelected(ep.title)}
                       style={{ marginLeft: 8, flex: 1 }}
-                      accessibilityLabel={`Selecionar ${ep.title}`}
+                      accessibilityLabel={Selecionar ${ep.title}}
                     >
                       <Text style={{ color: "white" }}>{ep.title}</Text>
                     </TouchableOpacity>

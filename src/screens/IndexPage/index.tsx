@@ -1,8 +1,10 @@
 import { ButtonLogin } from '@/components/ButtonLogin';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Link } from "expo-router";
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { style } from "./styles";
+
 
 
 export default function IndexPage() {
@@ -12,10 +14,10 @@ export default function IndexPage() {
 
     <LinearGradient
       colors={["#C73E1D", "#FAA916"]}
-      start={{ x: 0.5, y: 0.54 }}   
-      end={{ x: 0.5, y: 1.1 }}     
-      locations={[0, 0.7]}          
-      style={style.container}     
+      start={{ x: 0.5, y: 0.54 }}
+      end={{ x: 0.5, y: 1.1 }}
+      locations={[0, 0.7]}
+      style={style.container}
     >
       <Image
         style={style.img}
@@ -23,16 +25,17 @@ export default function IndexPage() {
       />
 
       <View style={style.viewButao}>
-       
-        <ButtonLogin title="Login" path="/login"/>
 
-        <TouchableOpacity style={style.buttonDois}>
-          <Text style={style.textoBotaoDois}>Inscrever</Text>
-        </TouchableOpacity>
+        <ButtonLogin title="Login" path="/login" />
+
+        <Link href="/cadastro" asChild>
+          <TouchableOpacity style={style.buttonDois}>
+            <Text style={style.textoBotaoDois}>Inscrever</Text>
+          </TouchableOpacity>
+        </Link>
       </View>
 
     </LinearGradient>
 
   );
 }
-
