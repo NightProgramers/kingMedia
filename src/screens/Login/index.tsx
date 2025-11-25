@@ -1,7 +1,7 @@
 import { ButtonBack } from "@/components/ButtonBack";
 import { MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
-import { useRouter } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { style } from "./styles";
@@ -99,7 +99,7 @@ export default function Login() {
                 </View>
 
                 <View style={style.boxEquecido}>
-                    <Text style={style.textEquecido}>Esqueceu a senha!</Text>
+                    <Link style={style.link} href={"/recuperarSenha"}>Esqueceu a senha?</Link>
                 </View>
             </View>
 
@@ -120,7 +120,7 @@ export default function Login() {
 
                 <Text style={style.textoCadastro}>
                     Ainda não possui uma conta?{" "}
-                    <Text style={style.cadastreSe}>Cadastre-se</Text>
+                    <Link style={style.link} href={"/cadastro"}>Cadastre-se</Link>
                 </Text>
             </View>
         </LinearGradient>
