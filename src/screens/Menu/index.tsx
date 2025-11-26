@@ -1,147 +1,183 @@
+// app/media/index.tsx
+import { themas } from "@/global/themas";
+import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { FlatList, ScrollView, View } from "react-native";
+import { ActivityIndicator, FlatList, ScrollView, Text, View } from "react-native";
 import CardSeries from "../../components/CardSeries";
 import Header from "../../components/Header";
-import styles from "./style";
 
-const API_KEY = "a9939e569b6b6e3c862fc962fe6e672c"; // <- substitua pela sua chave do TMDB
+const TMDB_API_KEY = "a9939e569b6b6e3c862fc962fe6e672c";
 const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
 
-type Item = {
+type TvItem = { id: number; name: string; overview?: string; poster_path?: string | null };
+type MovieItem = { id: number; title: string; overview?: string; poster_path?: string | null };
+type BookItem = {
   id: string;
-  title: string;
-  genre: string;
-  imageUrl?: string | null;
+  volumeInfo: {
+    title?: string;
+    authors?: string[];
+    imageLinks?: { thumbnail?: string };
+    description?: string;
+  };
 };
 
-// dados iniciais tipados
-const seriesData: Item[] = [
-  { id: "1", title: "Culpa Minha", genre: "Adolescente/Drama" },
-  { id: "2", title: "The Rookie", genre: "Ação/Policial" },
-  { id: "3", title: "Senhor dos anéis", genre: "fantasia/aventura" },
-];
+export default function MediaScreen() {
+  const [series, setSeries] = useState<TvItem[]>([]);
+  const [films, setFilms] = useState<MovieItem[]>([]);
+  const [books, setBooks] = useState<BookItem[]>([]);
 
-const filmsData: Item[] = [
-  { id: "4", title: "Top Gun", genre: "Ação" },
-  { id: "5", title: "Tropa de Elite", genre: "Ação/Policial" },
-  { id: "6", title: "It a Coisa", genre: "Terror" },
-];
+  const [loadingSeries, setLoadingSeries] = useState(true);
+  const [loadingFilms, setLoadingFilms] = useState(true);
+  const [loadingBooks, setLoadingBooks] = useState(true);
 
-const livrosData: Item[] = [
-  { id: "7", title: "Como eu era antes de você", genre: "Romance" },
-  { id: "8", title: "harry potter", genre: "Romance" },
-  { id: "9", title: "A rainha vermelha", genre: "Drama" },
-];
-
-// funções com tipos explícitos
-async function fetchPosterForMovie(title: string): Promise<string | null> {
-  try {
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
-      title
-    )}&language=pt-BR`;
-    const res = await fetch(url);
-    const json = await res.json();
-    const first = json.results && json.results[0];
-    if (first && first.poster_path) return IMAGE_BASE + first.poster_path;
-  } catch (err) {
-    // console.warn("movie search error", err);
-  }
-  return null;
-}
-
-async function fetchPosterForTv(title: string): Promise<string | null> {
-  try {
-    const url = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${encodeURIComponent(
-      title
-    )}&language=pt-BR`;
-    const res = await fetch(url);
-    const json = await res.json();
-    const first = json.results && json.results[0];
-    if (first && first.poster_path) return IMAGE_BASE + first.poster_path;
-  } catch (err) {
-    // console.warn("tv search error", err);
-  }
-  return null;
-}
-
-export default function Home(){
-  // useState com tipagem explícita
-  const [series, setSeries] = useState<Item[]>(seriesData);
-  const [films, setFilms] = useState<Item[]>(filmsData);
-  const [books, setBooks] = useState<Item[]>(livrosData);
+  const router = useRouter();
 
   useEffect(() => {
-    async function attachImages(): Promise<void> {
-      // Series (use search/tv)
-      const seriesWithImages = await Promise.all(
-        seriesData.map(async (item) => {
-          const poster = await fetchPosterForTv(item.title);
-          return { ...item, imageUrl: poster };
-        })
-      );
-      setSeries(seriesWithImages);
-
-      // Filmes (use search/movie)
-      const filmsWithImages = await Promise.all(
-        filmsData.map(async (item) => {
-          const poster = await fetchPosterForMovie(item.title);
-          return { ...item, imageUrl: poster };
-        })
-      );
-      setFilms(filmsWithImages);
-
-      // Livros: TMDB não é fonte de livros — tentativa como movie (fallback null)
-      const booksWithImages = await Promise.all(
-        livrosData.map(async (item) => {
-          const poster = await fetchPosterForMovie(item.title);
-          return { ...item, imageUrl: poster };
-        })
-      );
-      setBooks(booksWithImages);
+    // séries populares
+    async function loadSeries() {
+      setLoadingSeries(true);
+      try {
+        const res = await fetch(
+          `https://api.themoviedb.org/3/tv/popular?api_key=${TMDB_API_KEY}&language=pt-BR&page=1`
+        );
+        const j = await res.json();
+        setSeries(j.results || []);
+      } catch (err) {
+        console.warn("Erro TMDB series", err);
+      } finally {
+        setLoadingSeries(false);
+      }
     }
 
-    attachImages();
+    // filmes populares
+    async function loadFilms() {
+      setLoadingFilms(true);
+      try {
+        const res = await fetch(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB_API_KEY}&language=pt-BR&page=1`
+        );
+        const j = await res.json();
+        setFilms(j.results || []);
+      } catch (err) {
+        console.warn("Erro TMDB films", err);
+      } finally {
+        setLoadingFilms(false);
+      }
+    }
+
+    // livros (Google Books — busca geral, pode alterar a query)
+    async function loadBooks() {
+      setLoadingBooks(true);
+      try {
+        const res = await fetch(
+          `https://www.googleapis.com/books/v1/volumes?q=fiction&maxResults=20`
+        );
+        const j = await res.json();
+        setBooks(j.items || []);
+      } catch (err) {
+        console.warn("Erro Google Books", err);
+      } finally {
+        setLoadingBooks(false);
+      }
+    }
+
+    loadSeries();
+    loadFilms();
+    loadBooks();
   }, []);
 
   return (
-    <View style={styles.container}>
-      <ScrollView showsHorizontalScrollIndicator={false}>
-        <Header title="Séries" />
-        <FlatList<Item>
-          data={series}
-          horizontal
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <CardSeries title={item.title} genre={item.genre} image={item.imageUrl} />
-          )}
-          contentContainerStyle={styles.list}
-          showsHorizontalScrollIndicator={false}
-        />
+    <ScrollView style={{ flex: 1, backgroundColor: themas.colors.grayStrong }}>
+      <View style={{ paddingTop: 8 }}>
+        {/* SÉRIES */}
+        <Header title="Séries Populares" />
+        {loadingSeries ? (
+          <ActivityIndicator style={{ marginVertical: 24 }} size="large" />
+        ) : series.length === 0 ? (
+          <Text style={{ paddingHorizontal: 16, marginBottom: 12 }}>Nenhuma série encontrada.</Text>
+        ) : (
+          <FlatList
+            data={series}
+            horizontal
+            keyExtractor={(i) => String(i.id)}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ paddingHorizontal: 16 }}
+            renderItem={({ item }) => (
+              <CardSeries
+                title={item.name}
+                genre={item.overview ? item.overview.slice(0, 40) : "Série"}
+                image={item.poster_path ? IMAGE_BASE + item.poster_path : null}
+                onPress={() =>
+                  router.push(
+                    `/formsMedia?title=${encodeURIComponent(item.name)}&id=${item.id}&type=tv`
+                  )
+                }
+              />
+            )}
+          />
+        )}
 
-        <Header title="Filmes" />
-        <FlatList<Item>
-          data={films}
-          horizontal
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <CardSeries title={item.title} genre={item.genre} image={item.imageUrl} />
-          )}
-          contentContainerStyle={styles.list}
-          showsHorizontalScrollIndicator={false}
-        />
+        {/* FILMES */}
+        <Header title="Filmes Populares" />
+        {loadingFilms ? (
+          <ActivityIndicator style={{ marginVertical: 24 }} size="large" />
+        ) : films.length === 0 ? (
+          <Text style={{ paddingHorizontal: 16, marginBottom: 12 }}>Nenhum filme encontrado.</Text>
+        ) : (
+          <FlatList
+            data={films}
+            horizontal
+            keyExtractor={(i) => String(i.id)}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ paddingHorizontal: 16 }}
+            renderItem={({ item }) => (
+              <CardSeries
+                title={item.title}
+                genre={item.overview ? item.overview.slice(0, 40) : "Filme"}
+                image={item.poster_path ? IMAGE_BASE + item.poster_path : null}
+                onPress={() =>
+                  router.push(
+                    `/formsMedia?title=${encodeURIComponent(item.title)}&id=${item.id}&type=movie`
+                  )
+                }
+              />
+            )}
+          />
+        )}
 
+        {/* LIVROS */}
         <Header title="Livros" />
-        <FlatList<Item>
-          data={books}
-          horizontal
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <CardSeries title={item.title} genre={item.genre} image={item.imageUrl} />
-          )}
-          contentContainerStyle={styles.list}
-          showsHorizontalScrollIndicator={false}
-        />
-      </ScrollView>
-    </View>
+        {loadingBooks ? (
+          <ActivityIndicator style={{ marginVertical: 24 }} size="large" />
+        ) : books.length === 0 ? (
+          <Text style={{ paddingHorizontal: 16, marginBottom: 12 }}>Nenhum livro encontrado.</Text>
+        ) : (
+          <FlatList
+            data={books}
+            horizontal
+            keyExtractor={(i) => String(i.id)}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 20 }}
+            renderItem={({ item }) => {
+              const info = item.volumeInfo;
+              return (
+                <CardSeries
+                  title={info.title ?? "Sem título"}
+                  genre={info.authors ? info.authors.join(", ") : "Autor desconhecido"}
+                  image={info.imageLinks?.thumbnail ?? null}
+                  onPress={() =>
+                    router.push(
+                      `/formsMedia?title=${encodeURIComponent(
+                        info.title ?? "Livro"
+                      )}&id=${item.id}&type=book`
+                    )
+                  }
+                />
+              );
+            }}
+          />
+        )}
+      </View>
+    </ScrollView>
   );
 }
