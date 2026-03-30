@@ -1,50 +1,26 @@
-# Welcome to your Expo app 👋
+# 📱 KingMídia: Gerenciamento de Entretenimento Digital
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Um aplicativo móvel android desenvolvido em React Native, voltado para solucionar a desorganização no consumo de entretenimento digital, englobando animes, séries, livros e filmes. O projeto foi criado com o objetivo de oferecer uma plataforma prática e intuitiva, onde os usuários podem gerenciar sua biblioteca pessoal de forma eficiente e acompanhar suas obras favoritas.
 
-## Get started
+**Status do Projeto:** MVP Finalizado
 
-1. Install dependencies
+## Recursos Principais
 
-   ```bash
-   npm install
-   ```
+O KingMídia oferece funcionalidades essenciais para organizar a sua rotina de entretenimento:
 
-2. Start the app
+* **Autenticação e Perfis Customizados:** Permite o cadastro e login seguros utilizando e-mail, telefone ou redes sociais, além de recuperação de senha. Os usuários podem criar perfis personalizados com nome, foto e preferências próprias.
+* **Gestão de Biblioteca Pessoal:** Ferramentas para adicionar e gerenciar diversos tipos de mídias (animes, séries, filmes e livros) em um só lugar.
+* **Listas e Acompanhamento de Status:** Possibilidade de criar listas personalizadas, como "Favoritos" ou "Assistir Depois", e marcar o status exato de consumo de cada obra (assistido/lido, em andamento ou pendente).
+* **Busca e Filtros Avançados:** Sistema de pesquisa que permite filtrar o catálogo por título, gênero, autor ou diretor, ano, tipo e status.
 
-   ```bash
-   npx expo start
-   ```
+## Tecnologias e Metodologia Utilizadas
 
-In the output, you'll find options to open the app in a
+O desenvolvimento do KingMídia aplicou tecnologias modernas para garantir uma experiência de usuário rápida, segura e agradável:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+* **Framework Mobile:** React Native.
+* **Backend e Autenticação:** Firebase.
+* **Prototipagem e UI Design:** Figma para a confecção de todo o layout e design de interface, estruturando a identidade visual e usabilidade do projeto.
+* **Metodologia:** Abordagem de desenvolvimento em fases sequenciais ao longo de 14 semanas. A equipe contou com papéis bem definidos para a execução, englobando Gerência de Projeto, Desenvolvimento, UI Design e Testes de Software (QA).
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Screenshots
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
