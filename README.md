@@ -1,3 +1,7 @@
+<div align="center">
+  <img width="356" height="196" alt="logo2" src="https://github.com/user-attachments/assets/448720f0-b4c1-4991-97ed-21e94d5fd9cc" />
+</div>
+
 # 📱 KingMídia: Gerenciamento de Entretenimento Digital
 
 Um aplicativo móvel android desenvolvido em React Native, voltado para solucionar a desorganização no consumo de entretenimento digital, englobando animes, séries, livros e filmes. O projeto foi criado com o objetivo de oferecer uma plataforma prática e intuitiva, onde os usuários podem gerenciar sua biblioteca pessoal de forma eficiente e acompanhar suas obras favoritas.
@@ -23,4 +27,8 @@ O desenvolvimento do KingMídia aplicou tecnologias modernas para garantir uma e
 * **Metodologia:** Abordagem de desenvolvimento em fases sequenciais ao longo de 14 semanas. A equipe contou com papéis bem definidos para a execução, englobando Gerência de Projeto, Desenvolvimento, UI Design e Testes de Software (QA).
 
 ## Screenshots
-
+<img src="https://github.com/user-attachments/assets/ed4507e8-df69-4bba-9635-459e8a0a4289" width="300"/>
+<img src="https://github.com/user-attachments/assets/fe197cc0-7095-4e26-aa89-75f5b80accca" width="300"/>
+<img src="https://github.com/user-attachments/assets/a0be47cd-ace8-4874-8673-f4091aaa6ea1" width="300"/>
+<img src="https://github.com/user-attachments/assets/cf0c1adc-a96d-49fa-a85d-3171e8a6d06e" width="300"/>
+<img src="https://github.com/user-attachments/assets/0858dabc-eea7-4e38-9817-e77059679171" width="300"/>
